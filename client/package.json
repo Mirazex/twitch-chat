@@ -1,0 +1,30 @@
+{
+  "name": "twitch-chat-server",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mirazex/twitch-chat.git"
+  },
+  "author": "Mirazex <mirax.developer@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Mirazex/twitch-chat/issues"
+  },
+  "homepage": "https://github.com/Mirazex/twitch-chat#readme",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.2",
+    "socket.io-client": "^3.1.0",
+    "timeago.js": "^4.0.2",
+    "vue": "^3.0.4",
+    "vue-router": "^4.0.3",
+    "vuex": "^4.0.0-rc.2"
+  },
+  "devDependencies": {
+    "@vue/compiler-sfc": "^3.0.4",
+    "vite": "^1.0.0-rc.13"
+  }
+}

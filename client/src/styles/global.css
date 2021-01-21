@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+  --bg-primary: #141519;
+  --bg-secondary: #161a1d;
+  --bg-dark: #121116;
+
+  --red-secondary: #d41d3b;
+  --red-primary: #ff1c51;
+
+  --yellow-secondary: #ff7d01;
+  --yellow-primary: #fbc723;
+
+  --green-secondary: #35b74b;
+  --green-primary: #11fc7c;
+
+  --blue-secondary: #0a8aa5;
+  --blue-primary: #20e1ff;
+
+  --grey-secondary: #2b2b33;
+  --grey-primary: #3f3f41;
+
+  --text-primary: #fbffff;
+  --text-secondary: #b5bcc2;
+}
+
+html, 
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+  font-family: 'Roboto', 'Roboto Mono', monospace;
+  margin: auto;
+  overflow: hidden;
+  user-select: none;
+  background-image: url(../assets/bg-jugg.jpg);
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-color: rgba(20, 21, 25, 1);
+}
+
+#app {
+  backdrop-filter: blur(6px) saturate(120%);
+  background-color: rgba(20, 21, 25, .8);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+a,
+button,
+input,
+textarea {
+    outline: unset !important;
+    border: unset;
+    padding: unset;
+    margin: unset;
+    text-decoration: unset;
+    user-select: none;
+    background-color: unset;
+    font-family: 'Roboto', 'Roboto Mono', monospace;
+}
+
+a, button {
+    cursor: pointer;
+}
