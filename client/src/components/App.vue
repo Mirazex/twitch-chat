@@ -20,7 +20,8 @@ export default defineComponent({
 <style scoped>
 .container {
   display: flex;
-  padding: 24px 0;
   flex: auto;
+  /* min-height: 100%; */
+  height: 0;
 }
 </style>

@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="messages-list">
-      <div class="message" v-for="(message, i) of channel.messages" :key="i">
+      <div class="message" v-for="(message, i) of channel.messages" :key="i" :style="`color: ${channel.members.find(m => m.id === message.member)?.color}`">
         <div class="message-author">
           <span>{{ channel.members.find(m => m.id === message.member)?.display_name }}</span>
         </div>
@@ -25,7 +25,7 @@
 
     </div>
   </div>
-  <!-- <Memberbar v-if="stream.channel"/> -->
+  <ChatMembers v-if="channel.current"/>
   
 </template>
 
@@ -35,9 +35,9 @@ import { useRoute, useRouter } from 'vue-router'
 import { useSocket } from '../plugins/socketio'
 import { useStore } from 'vuex'
 
-// import Memberbar from '../components/Memberbar.vue'
+import ChatMembers from '../components/ChatMembers.vue'
 export default defineComponent({
-	// components: { Memberbar },
+	components: { ChatMembers },
   name: 'channel-chat',
   setup() {
     const route = useRoute()
@@ -74,11 +74,10 @@ export default defineComponent({
     })
 
     socket.on('twitch:join-member', (member) => {
-      console.log(member)
       store.commit('channel/JOIN_MEMBER', member)
     })
-    socket.on('twitch:leave-member', (member) => {
-      store.commit('channel/LEAVE_MEMBER', member)
+    socket.on('twitch:leave-member', (id) => {
+      store.commit('channel/LEAVE_MEMBER', id)
     })
 
 
@@ -113,9 +112,28 @@ export default defineComponent({
   border-radius: 12px;
 }
 .messages-list {
-  margin-top: 24px;
+  padding-top: 16px;
+  margin-block: 8px;
+  padding-right: 8px;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.messages-list::-webkit-scrollbar {
+  width: 8px;
+
+}
+.messages-list::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.messages-list::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  border-radius: 8px;
+}
+.messages-list::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.08);
 }
 
 .members-bar {
@@ -179,7 +197,7 @@ export default defineComponent({
 .content {
   display: flex;
   flex: auto;
-  padding: 0 20px;
+  padding: 0 8px;
   flex-direction: column;
 }
 </style>

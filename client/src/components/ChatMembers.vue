@@ -3,18 +3,14 @@
 
     <div class="result-title"> 
       <i class="fas fa-comment"></i>
-      <span>Участники</span>
+      <span>Members</span>
     </div>
 
     <div class="result-list" v-if="members.length">
       <div class="member" v-for="(member, i) of members" :key="i">
 
-        <!-- <div class="member-logo">
-          <img class="member-image glow" :src="member.logo"/>
-          <img class="member-image sharp" :src="member.logo"/>
-        </div> -->
         <div class="member-name">
-          <span>{{ member.display_name }}</span>
+          <span :style="`color: ${member.color}`">{{ member.display_name }}</span>
         </div>
 
       </div>
@@ -22,7 +18,7 @@
 
     <div class="result-list not-found" v-else-if="!members.length">
       <div class="text">
-        <span>'Чат пуст'</span>
+        <span>No members</span>
       </div>
     </div>
 
@@ -35,11 +31,11 @@ import { computed, ref } from "vue"
 import { useStore } from 'vuex'
 
 export default {
-  name: 'members-bar',
+  name: 'chat-members',
   setup() {
     const store = useStore()
 
-    const members = computed(() => store.state.stream.members)
+    const members = computed(() => store.state.channel.members)
 
     return {
       members
@@ -53,7 +49,26 @@ export default {
   display: flex;
   flex-direction: column;
   margin-left: 8px;
+  margin-bottom: 8px;
+  overflow-y: auto;
 }
+
+.result-list::-webkit-scrollbar {
+  width: 8px;
+
+}
+.result-list::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.result-list::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  border-radius: 8px;
+}
+.result-list::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
 .result-list .member {
   display: flex;
   flex-direction: row;

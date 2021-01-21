@@ -1,4 +1,4 @@
-const state = () => ({
+export default () => ({
   search: {
     value: '',
     result: {
@@ -8,5 +8,3 @@ const state = () => ({
   },
   tracked: []
 })
-
-export default state
